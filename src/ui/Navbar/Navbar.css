@@ -1,0 +1,31 @@
+.navbar {
+    width: 80%;
+    margin: auto;
+    padding: 1em 1em 0 1em;
+}
+
+.navLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLinks img {
+    height: 60px;
+}
+.navLinks a, i {
+    text-decoration: none;
+    color: rgba(251,129,22,255);
+}
+.navigation {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    gap: 0.7em;
+    color: rgba(251,129,22,255);
+    font-size: 22px;
+    font-weight: 600;
+}
