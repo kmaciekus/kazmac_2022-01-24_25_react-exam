@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { AuthProvider } from "./components/AuthProvider";
-import { Form } from "./components/Form";
 import { Navbar } from "./organisms/Navbar";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
