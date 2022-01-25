@@ -1,11 +1,15 @@
 
 import './App.css';
+import { Form } from "./components/Form";
+import { Navbar } from "./organisms/Navbar";
+import { Register } from "./pages/Register";
 
 function App() {
-  console.log(process.env)
   return (
     <div className="App">
-        Hello
+        <Navbar linkHome="home" linkAdd="add" />
+        <Register />
+        <Form register="register"/>
     </div>
   );
 }
