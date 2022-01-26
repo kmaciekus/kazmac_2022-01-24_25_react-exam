@@ -7,14 +7,16 @@ import { Button } from "../ui/Button/Button";
 import { Container } from "../ui/Container/Container";
 import { FormField } from "../ui/FormFIeld/FormField";
 import { Error } from "../components/Error";
+import { Footer } from "../components/Footer";
 
 export const Register = () => {
 	const navigate = useNavigate();
 	const user = { email: "", password: "" };
 	const [model, setModel] = useState(user);
-	const [error, setError] = useState(error);
+	const [error, setError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
-	const handleClick = async () => {
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 		if (!model.email.length || !model.password.length)
 			return setError("Please enter email and password");
 
@@ -23,31 +25,25 @@ export const Register = () => {
 		setError(null);
 		navigate("/login");
 	};
-	const showError = () => {
-		if (error) {
-			return (
-				<Error error1={error}/>
-			);
-		}
-		return;
-	}
+	const showError = error ? <Error error1={error}/> : "";
+
 	return (
 		<>
 			<Header title="Register" />
-			<Container as="form">
+			<Container as="form" onSubmit={handleSubmit}>
 				<Form onUpdate={handleUpdate} />
 				{showError}
 				<FormField className="buttons">
 					<Button
-						type="button"
+						type="submit"
 						className="main"
-						onClick={handleClick}
 					>
 						REGISTER
 					</Button>
 					<Button type="reset">CANCEL</Button>
 				</FormField>
 			</Container>
+			<Footer/>
 		</>
 	);
 };

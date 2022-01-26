@@ -9,6 +9,7 @@ import { Button } from "../ui/Button/Button";
 import { Container } from "../ui/Container/Container";
 import { FormField } from "../ui/FormFIeld/FormField";
 import { Error } from "../components/Error";
+import { Footer } from "../components/Footer";
 
 export const AddSkill = () => {
 	const navigate = useNavigate();
@@ -17,10 +18,10 @@ export const AddSkill = () => {
 	const [model, setModel] = useState(skill);
 	const [error, setError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
-	const handleClick = async () => {
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 		if (!model.title.length || !model.description.length)
 			return setError("Please enter title and description!");
-        console.log("Model", model);
 		const res = await SkillApi.add(token, model);
 		if (res.err) return setError(res.err);
 		setError(null);
@@ -31,20 +32,20 @@ export const AddSkill = () => {
 	return (
 		<>
 			<Header title="Add Skill" />
-			<Container>
+			<Container as="form" onSubmit={handleSubmit}>
 				<FormAdd onUpdate={handleUpdate} />
 				{showError}
 				<FormField className="buttons">
 					<Button
-						type="button"
+						type="submit"
 						className="main"
-						onClick={handleClick}
 					>
 						ADD
 					</Button>
 					<Button type="reset">CANCEL</Button>
 				</FormField>
 			</Container>
+			<Footer/>
 		</>
 	);
 };

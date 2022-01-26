@@ -8,5 +8,4 @@ export const Head = ({className, ...props}) =>
 export const HeaderTitle = ({className, ...props}) =>
     Element({as: "h1", className: classnames("header-title", className), ...props});
 
-export const ButtonWrapper = ({className, ...props}) =>
-    Element({as: "div", className: classnames("button-wrapper"), ...props});
+

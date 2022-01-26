@@ -18,6 +18,3 @@
 	font-family: var(--primary-font-family);
     border-radius: var(--header-border-radius);
 }
-.button-wrapper {
-	display: flex;
-}

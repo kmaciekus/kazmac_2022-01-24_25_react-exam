@@ -44,13 +44,13 @@ export const FormAdd = ({ onUpdate }) => {
         onUpdate({
             title: state.title,
             description: state.description,
-        })
+        });
     },[state]);
 
 	return (
         <>
-            <Field label="Skill title" name="title" type="text" onChange={onTitleChange} />
-            <TextArea label="Skill description" name="description" onChange={onDescriptionChange} />
+            <Field label="Skill title" name="title" type="text" onChange={onTitleChange} required />
+            <TextArea label="Skill description" name="description" onChange={onDescriptionChange} required/>
         </>
     );
 };

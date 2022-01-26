@@ -13,6 +13,3 @@ export const CardTitle = ({className, ...props}) =>
 
 export const CardInfoText = ({className, ...props}) => 
     Element({as: "p", className:className, ...props});
-
-export const CardButtonWrapper = ({className, ...props}) =>
-    Element({as:"div", className: classnames("", className), ...props});
