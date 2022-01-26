@@ -1,31 +1,40 @@
 .navbar {
-    width: 80%;
-    margin: auto;
-    padding: 1em 1em 0 1em;
+	width: var(--page-width);
+	margin: auto;
+	padding: 1rem;
+	
 }
 
 .navLinks {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .navLinks img {
-    height: 60px;
+	height: 60px;
 }
-.navLinks a, i {
-    text-decoration: none;
-    color: var(--main-color);
+.page-title {
+	color: var(--secondary-color);
+	font-size: 2rem;
+	line-height: 2rem;
+	font-weight: 700;
+	font-family: var(--secondary-font-family);
+}
+.navLinks a,
+i {
+	text-decoration: none;
+	color: var(--main-color);
 }
 .navigation {
-    display: flex;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
-    margin: 0;
-    padding: 0;
-    gap: 0.7em;
-    color: var(--main-color);
-    font-size: 1rem;
-    font-weight: 600;
+	margin: 0;
+	padding: 0;
+	gap: 1rem;
+	color: var(--main-color);
+	font-size: 1.2rem;
+	font-weight: 600;
 }

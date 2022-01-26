@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../authHook/useAuth";
 import { Skill } from "../components/Skill";
+import { Header } from "../organisms/Header";
 import { SkillApi } from "../services/skillsApi";
 import { Container } from "../ui/Container/Container";
+
 
 export const Home = () => {
 	const [skills, setSkills] = useState();
 	const [error, setError] = useState(null);
-	const { token } = useAuth();
-    const { state } = useLocation();
+	const [title, setTitle] = useState()
+	const { token} = useAuth();
+	const { state } = useLocation();
 
 	const fetchSkills = async () => {
 		const sk = await SkillApi.all(token);
@@ -23,12 +26,11 @@ export const Home = () => {
 		fetchSkills();
 	}, []);
 
-    useEffect(() => {
-        if (!state) return;
-        if (state.logedIn) {
-            console.log(state.logedIn);
-        }
-    },[state]);
+	useEffect(() => {
+		if (!state.logedIn) return;
+		const username = state.logedIn.email.split("@")[0];
+		setTitle(`Welcome ${username}! Here are your Skillzz:`);
+	}, [state]);
 
 	const errorText = !error ? "Loading..." : `${error}`;
 
@@ -48,7 +50,9 @@ export const Home = () => {
 	}
 	return (
 		<div>
+			<Header title="SkillZzz" />
 			<Container>
+				<p>{title}</p>
 				{skills.map((skill) => (
 					<Skill key={skill.id} skill={skill} />
 				))}

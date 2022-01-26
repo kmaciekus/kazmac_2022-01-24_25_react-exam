@@ -29,4 +29,15 @@ export class SkillApi {
 		});
 		return res.json();
 	}
+	static async add(token, skill) {
+		const res = await fetch(`${REACT_APP_BASE_URL}/v1/content/skills`, {
+			method: "POST",
+			headers: {
+				authorization: `Bearer ${token}`,
+				"Contetn-type": "application/json",
+			},
+			body: JSON.stringify(skill),
+		});
+		return res.json();
+	}
 }

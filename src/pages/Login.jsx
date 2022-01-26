@@ -1,34 +1,46 @@
 import React, { useState } from "react";
 import { Container } from "../ui/Container/Container";
-import { Form } from "../components/Form";
+import { Form } from "../components/FormLogReg";
 import { FormField } from "../ui/FormFIeld/FormField";
 import { Button } from "../ui/Button/Button";
 import { useAuth } from "../authHook/useAuth";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../organisms/Header";
+import { Error } from "../components/Error";
 
 export const Login = () => {
 	const navigate = useNavigate();
 	const { login, error } = useAuth();
 	const user = { email: "", password: "" };
 	const [model, setModel] = useState(user);
+	const [logError, setLogError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
 	const handleClick = async () => {
+		if (!model.email.length || !model.password.length)
+			return setLogError("Please enter email and password!");
 		const res = await login(model);
-		if (res.err) return console.warn(res.err);
-		navigate("/", {state: {logedIn: res}});
+		if (res.err) return setLogError(res.err);
+		setLogError(null);
+		navigate("/", { state: { logedIn: model } });
 	};
+	const showError = error || logError ? <Error error1={error} error2={logError}/> :"";
 	return (
-		<Container as="form">
-			<Form onUpdate={handleUpdate} />
-			<FormField>
-				<div style={{ color: "red" }}>{error}</div>
-			</FormField>
-			<FormField className="buttons">
-				<Button type="button" onClick={handleClick}>
-					LOGIN
-				</Button>
-				<Button type="reset">CANCEL</Button>
-			</FormField>
-		</Container>
+		<>
+			<Header title="Login" />
+			<Container as="form">
+				<Form onUpdate={handleUpdate} />
+				{showError}
+				<FormField className="buttons">
+					<Button
+						type="button"
+						className="main"
+						onClick={handleClick}
+					>
+						LOGIN
+					</Button>
+					<Button type="reset">CANCEL</Button>
+				</FormField>
+			</Container>
+		</>
 	);
 };

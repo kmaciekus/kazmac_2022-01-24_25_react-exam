@@ -2,26 +2,12 @@ import {useState} from "react";
 import {AuthContext} from "../authHook/useAuth";
 import {SkillApi} from "../services/skillsApi";
 
-// extract username from jwt
-const getUsername = (token) => {
-    let username = null;
-
-    if (token) {
-        const tokenPayload = token.split(".")[1];
-        const decodedPayload = atob(tokenPayload);
-        const parsedPayload = JSON.parse(decodedPayload);
-        username = parsedPayload.username;
-    }
-
-    return username
-}
 
 export const AuthProvider = ({children}) => {
     const token = sessionStorage.getItem("token");
 
     const [state, setState] = useState({
         token,
-        username: getUsername(token),
         error: null,
     });
 
@@ -37,8 +23,8 @@ export const AuthProvider = ({children}) => {
             return {error: res.err};
         }
 
-        setState(({error: null, token: res.token, username: getUsername(res.token)}));
-        console.log("Provider:", state.username);
+        setState(({error: null, token: res.token}));
+        
         sessionStorage.setItem("token", res.token);
 
         return {token: res.token};
@@ -47,8 +33,7 @@ export const AuthProvider = ({children}) => {
     const logout = () => {
         setState({
             token: null,
-            error: null,
-            username: null
+            error: null
         })
 
         sessionStorage.removeItem("token");

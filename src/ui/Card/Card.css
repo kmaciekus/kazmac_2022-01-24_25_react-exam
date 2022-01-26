@@ -11,6 +11,9 @@
     border: 1px solid rgba(200, 200, 200, 0.4);
     border-radius: 5px;
     text-align: center;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
+	-moz-box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
+	box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
 }
 
 .card h4 , p {
