@@ -3,6 +3,7 @@ import "./App.css";
 import { AuthProvider } from "./components/AuthProvider";
 import { RequireAuth } from "./components/RequireAuth";
 import { Navbar } from "./organisms/Navbar";
+import { AddSkill } from "./pages/AddSkill";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
@@ -18,6 +19,14 @@ function App() {
 						element={
 							<RequireAuth>
 								<Home />
+							</RequireAuth>
+						}
+					/>
+					<Route 
+						path="/add"
+						element={
+							<RequireAuth>
+								<AddSkill />
 							</RequireAuth>
 						}
 					/>
