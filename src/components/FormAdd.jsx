@@ -44,7 +44,7 @@ export const FormAdd = ({ onUpdate }) => {
         onUpdate({
             title: state.title,
             description: state.description,
-        })
+        });
     },[state]);
 
 	return (

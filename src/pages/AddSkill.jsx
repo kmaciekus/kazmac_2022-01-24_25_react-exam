@@ -17,10 +17,10 @@ export const AddSkill = () => {
 	const [model, setModel] = useState(skill);
 	const [error, setError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
-	const handleClick = async () => {
+	const handleClick = async (e) => {
+		e.preventDefault();
 		if (!model.title.length || !model.description.length)
 			return setError("Please enter title and description!");
-        console.log("Model", model);
 		const res = await SkillApi.add(token, model);
 		if (res.err) return setError(res.err);
 		setError(null);
@@ -32,7 +32,7 @@ export const AddSkill = () => {
 		<>
 			<Header title="Add Skill" />
 			<Container>
-				<FormAdd onUpdate={handleUpdate} />
+				<FormAdd onUpdate={handleUpdate} onSubmit={handleClick} />
 				{showError}
 				<FormField className="buttons">
 					<Button

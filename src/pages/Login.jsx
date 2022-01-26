@@ -7,7 +7,6 @@ import { useAuth } from "../authHook/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../organisms/Header";
 import { Error } from "../components/Error";
-
 export const Login = () => {
 	const navigate = useNavigate();
 	const { login, error } = useAuth();
@@ -15,7 +14,8 @@ export const Login = () => {
 	const [model, setModel] = useState(user);
 	const [logError, setLogError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
-	const handleClick = async () => {
+	const handleClick = async (e) => {
+		e.preventDefault();
 		if (!model.email.length || !model.password.length)
 			return setLogError("Please enter email and password!");
 		const res = await login(model);
@@ -28,7 +28,7 @@ export const Login = () => {
 		<>
 			<Header title="Login" />
 			<Container as="form">
-				<Form onUpdate={handleUpdate} />
+				<Form onUpdate={handleUpdate} onSubmit={handleClick} />
 				{showError}
 				<FormField className="buttons">
 					<Button

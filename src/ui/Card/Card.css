@@ -22,14 +22,10 @@ p {
 }
 
 .card p {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	word-break: break-all;
+    white-space: pre-wrap;
 }
 
-.card p:hower {
-    overflow: visible;
-}
 
 .content-wrapper {
 	margin-bottom: 0.5em;

@@ -30,7 +30,6 @@ export class SkillApi {
 		return res.json();
 	}
 	static async add(token, skill) {
-		console.log(JSON.stringify(skill));
 		const res = await fetch(`${REACT_APP_BASE_URL}/v1/content/skills`, {
 			method: "POST",
 			headers: {
