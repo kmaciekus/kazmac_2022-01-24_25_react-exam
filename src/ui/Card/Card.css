@@ -1,26 +1,37 @@
-.card{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-    gap: 0.5em;
-    padding: 1em;
-    width: 200px;
-    height: auto;
-    overflow: hidden;
-    border: 1px solid rgba(200, 200, 200, 0.4);
-    border-radius: 5px;
-    text-align: center;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
+	gap: 0.5em;
+	padding: 1em;
+	width: 200px;
+	height: auto;
+	overflow: hidden;
+	border: 1px solid rgba(200, 200, 200, 0.4);
+	border-radius: 5px;
+	text-align: center;
+	-webkit-box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
 	-moz-box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
 	box-shadow: 5px 5px 5px 0px rgba(214, 214, 214, 0.15);
 }
 
-.card h4 , p {
-    margin: 0;
+.card h4,
+p {
+	margin: 0;
+}
+
+.card p {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card p:hower {
+    overflow: visible;
 }
 
 .content-wrapper {
-    margin-bottom: 0.5em;
-    font-size: 0.85em;
+	margin-bottom: 0.5em;
+	font-size: 0.85em;
 }

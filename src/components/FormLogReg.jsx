@@ -50,7 +50,7 @@ export const Form = ({onUpdate}) => {
 	return (
 		<>
 			<Field label="Email" name="email" type="email" onChange={onEmailChange} />
-			<Field label="Password" name="password" type="password" onChange={onPasswordChange} />
+			<Field label="Password" name="password" type="password" onChange={onPasswordChange} min={8} max={64} />
 		</>
 	);
 };
