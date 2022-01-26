@@ -49,8 +49,8 @@ export const FormAdd = ({ onUpdate }) => {
 
 	return (
         <>
-            <Field label="Skill title" name="title" type="text" onChange={onTitleChange} />
-            <TextArea label="Skill description" name="description" onChange={onDescriptionChange} />
+            <Field label="Skill title" name="title" type="text" onChange={onTitleChange} required />
+            <TextArea label="Skill description" name="description" onChange={onDescriptionChange} required />
         </>
     );
 };

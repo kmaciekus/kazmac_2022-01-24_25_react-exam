@@ -7,7 +7,7 @@ import { SkillApi } from "../services/skillsApi";
 import { Container } from "../ui/Container/Container";
 
 export const Home = () => {
-	const [skills, setSkills] = useState();
+	const [skills, setSkills] = useState(null);
 	const [error, setError] = useState(null);
 	const [title, setTitle] = useState();
 	const [username, setUsername] = useState();

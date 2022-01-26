@@ -17,7 +17,7 @@ export const AddSkill = () => {
 	const [model, setModel] = useState(skill);
 	const [error, setError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
-	const handleClick = async (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!model.title.length || !model.description.length)
 			return setError("Please enter title and description!");
@@ -31,14 +31,13 @@ export const AddSkill = () => {
 	return (
 		<>
 			<Header title="Add Skill" />
-			<Container>
-				<FormAdd onUpdate={handleUpdate} onSubmit={handleClick} />
+			<Container as="form" onSubmit={handleSubmit}>
+				<FormAdd onUpdate={handleUpdate} />
 				{showError}
 				<FormField className="buttons">
 					<Button
-						type="button"
+						type="submit"
 						className="main"
-						onClick={handleClick}
 					>
 						ADD
 					</Button>

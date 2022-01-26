@@ -27,7 +27,7 @@ const reducer = (state, action) => {
 	}
 };
 
-export const Form = ({onUpdate}) => {
+export const Form = ({onUpdate, onSubmit}) => {
 	const [state, dispatch] = useReducer(reducer, {
 		email: "",
 		password: "",
@@ -49,8 +49,8 @@ export const Form = ({onUpdate}) => {
 	
 	return (
 		<>
-			<Field label="Email" name="email" type="email" onChange={onEmailChange} />
-			<Field label="Password" name="password" type="password" onChange={onPasswordChange} min={8} max={64} />
+			<Field label="Email" name="email" type="email" onChange={onEmailChange} required />
+			<Field label="Password" name="password" type="password" onChange={onPasswordChange} required minLength={8} />
 		</>
 	);
 };

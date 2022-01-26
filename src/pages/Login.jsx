@@ -14,7 +14,7 @@ export const Login = () => {
 	const [model, setModel] = useState(user);
 	const [logError, setLogError] = useState(null);
 	const handleUpdate = (update) => setModel(update);
-	const handleClick = async (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!model.email.length || !model.password.length)
 			return setLogError("Please enter email and password!");
@@ -27,14 +27,13 @@ export const Login = () => {
 	return (
 		<>
 			<Header title="Login" />
-			<Container as="form">
-				<Form onUpdate={handleUpdate} onSubmit={handleClick} />
+			<Container as="form" onSubmit={handleSubmit}>
+				<Form onUpdate={handleUpdate} />
 				{showError}
 				<FormField className="buttons">
 					<Button
-						type="button"
+						type="submit"
 						className="main"
-						onClick={handleClick}
 					>
 						LOGIN
 					</Button>
