@@ -9,6 +9,7 @@ import { Button } from "../ui/Button/Button";
 import { Container } from "../ui/Container/Container";
 import { FormField } from "../ui/FormFIeld/FormField";
 import { Error } from "../components/Error";
+import { Footer } from "../components/Footer";
 
 export const AddSkill = () => {
 	const navigate = useNavigate();
@@ -44,6 +45,7 @@ export const AddSkill = () => {
 					<Button type="reset">CANCEL</Button>
 				</FormField>
 			</Container>
+			<Footer/>
 		</>
 	);
 };

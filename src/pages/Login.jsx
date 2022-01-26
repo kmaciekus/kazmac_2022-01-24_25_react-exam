@@ -7,6 +7,7 @@ import { useAuth } from "../authHook/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../organisms/Header";
 import { Error } from "../components/Error";
+import { Footer } from "../components/Footer";
 export const Login = () => {
 	const navigate = useNavigate();
 	const { login, error } = useAuth();
@@ -40,6 +41,7 @@ export const Login = () => {
 					<Button type="reset">CANCEL</Button>
 				</FormField>
 			</Container>
+			<Footer/>
 		</>
 	);
 };

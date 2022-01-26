@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../authHook/useAuth";
+import { Footer } from "../components/Footer";
 import { Skill } from "../components/Skill";
 import { Header } from "../organisms/Header";
 import { SkillApi } from "../services/skillsApi";
@@ -88,6 +89,7 @@ export const Home = () => {
 						<Link to="/add">Add</Link>
 					</span>
 				)}
+				<Footer/>
 			</Container>
 		);
 	}
@@ -96,6 +98,7 @@ export const Home = () => {
 			<Header title="SkillZzz" />
 			<p>{title}</p>
 			<Container>{skillsSection}</Container>
+			<Footer/>
 		</div>
 	);
 };
