@@ -8,35 +8,36 @@ import {
 } from "../ui/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import { useAuth } from "../authHook/useAuth";
 
-export const Navbar = ({ ...props }) => {
-	const { linkHome, linkAdd } = props;
-	const links =
-		!linkHome & !linkAdd ? (
-			<Navigation>
-				<Link to="/login">
-					<Item>Login</Item>
-				</Link>
-				<Link to="/register">
-					<Item>Register</Item>
-				</Link>
-			</Navigation>
-		) : (
-			<Navigation>
-				<Link to={`/${linkHome}`}>
-					<Item>{linkHome.charAt(0).toUpperCase() + linkHome.slice(1)}</Item>
-				</Link>
-				<Link to={`/${linkAdd}`}>
-					<Item>{linkAdd.charAt(0).toUpperCase() + linkAdd.slice(1)}</Item>
-				</Link>
-			</Navigation>
-		);
+export const Navbar = () => {
+	const { token } = useAuth();
+	const links = !token ? (
+		<Navigation>
+			<Link to="/login">
+				<Item>Login</Item>
+			</Link>
+			<Link to="/register">
+				<Item>Register</Item>
+			</Link>
+		</Navigation>
+	) : (
+		<Navigation>
+			<Link to="/">
+				<Item>Home</Item>
+			</Link>
+			<Link to="/add">
+				<Item>Add</Item>
+			</Link>
+		</Navigation>
+	);
 	return (
 		<NavbarWrapper>
 			<NavLinks>
 				<Link to="/">
 					<Logo src={logo} />
 				</Link>
+				<Item className="page-title">SKILLZzz</Item>
 				{links}
 			</NavLinks>
 		</NavbarWrapper>
